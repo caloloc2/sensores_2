@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sensores</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body onload="Verifica_Inicio();">
+	<div id="loading">
+		<figure><img src="img/loading.gif" alt=""></figure>	
+		<p>Cargando informaci&oacute;n...</p>
+	</div>
+	<header>
+		<h1>Sensores</h1>
+		<ul>
+			<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Dispositivos</a></li>
+			<li><a href="php/salir.php">Salir</a></li>
+		</ul>
+	</header>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">DISPOSITIVOS</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        
+<form class="form-inline" id="nuevo_dispositivo" style="padding-bottom: 20px;">
+  <label class="sr-only" for="inlineFormInputName2">Nombre del Dispositivo</label>
+  <input type="text" class="form-control mb-2 mr-sm-2" id="dispositivo" placeholder="Nombre del Dispositivo">  
+
+  <button type="submit" class="btn btn-primary mb-2">Crear</button>
+</form>
+
+
+<table class="table table-striped table-hover">
+	<tbody id="listado_dispositivos">
+		
+	</tbody>
+</table>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="contenido">
+		<div class="graficos">
+			<div id="grafica"></div>
+		</div>
+		<div class="tabla">
+			<div class="dispositivos">
+				<select name="dispositivos_seleccion" id="dispositivos_seleccion" class="form-control" onchange="Obtener_Datos(); return false;">
+				
+				</select>
+			</div>
+
+			<div class="btn-group" role="group" aria-label="Basic example">
+			  <button type="button" class="btn btn-secondary" onclick="Obtener_Datos(); return false;">Actualizar</button>
+			  <button type="button" class="btn btn-secondary" onclick="Impresion(); return false;">Reporte PDF</button>
+			  <button type="button" class="btn btn-secondary" onclick="Eliminar(); return false;">Borrar Todo</button>
+			</div>
+
+			<div class="data">
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<td width="14%"><strong>Fecha</strong></td>
+							<td width="10%"><strong>Hora</strong></td>
+							<td width="8%"><strong>CO2</strong></td>
+							<td width="8%"><strong>Humo</strong></td>
+							<td width="8%"><strong>Alcohol</strong></td>
+							<td width="8%"><strong>Temp.</strong></td>
+							<td width="8%"><strong>Hum.</strong></td>
+							<td width="8%"><strong>Lat.</strong></td>
+							<td width="8%"><strong>Long.</strong></td>
+							<td width="10%"><strong>&nbsp;</strong></td>
+						</tr>
+					</thead>
+					<tbody id="listado">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/highcharts.js"></script>
+	<script src="js/pdf.min.js"></script>
+	<script src="js/impresion.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			Dispositivos();
+			Obtener_Datos();
+		})
+	</script>
+</body>
+</html>
+
+<!-- http://localhost/sensores_2/php/nuevo_dato.php?co2=12&humo=1.23&alcohol=1.23&temp=1.23&humedad=1.23&latitud=1.23&longitud=1.23&id=8 -->
