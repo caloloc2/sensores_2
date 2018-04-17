@@ -10,7 +10,9 @@ function Impresion(){
 	$.ajax({
       url: 'php/obtener_datos.php',
       data: {
-      	id_dispositivo : document.getElementById('dispositivos_seleccion').value 
+      	id_dispositivo : document.getElementById('dispositivos_seleccion').value,
+      	fecha_inicio: document.getElementById('fecha_inicio').value,
+		fecha_final: document.getElementById('fecha_final').value,
       },
       type: "POST",
       dataType: 'json',

@@ -59,6 +59,10 @@
 			<div id="grafica"></div>
 		</div>
 		<div class="tabla">
+			<div class="fechas">
+				<input type="date" id="fecha_inicio" class="form-control">
+				<input type="date" id="fecha_final" class="form-control">
+			</div>
 			<div class="dispositivos">
 				<select name="dispositivos_seleccion" id="dispositivos_seleccion" class="form-control" onchange="Obtener_Datos(); return false;">
 				
@@ -106,6 +110,9 @@
 		$(document).ready(function(){
 			Dispositivos();
 			Obtener_Datos();
+			
+			document.getElementById('fecha_inicio').value = Fecha();
+			document.getElementById('fecha_final').value = Fecha();
 		})
 	</script>
 </body>

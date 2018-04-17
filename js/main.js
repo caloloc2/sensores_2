@@ -115,7 +115,9 @@ function Obtener_Datos(){
 		url: 'php/obtener_datos.php',
 		dataType: 'json',
 		data: {
-			id_dispositivo: document.getElementById('dispositivos_seleccion').value
+			id_dispositivo: document.getElementById('dispositivos_seleccion').value,
+			fecha_inicio: document.getElementById('fecha_inicio').value,
+			fecha_final: document.getElementById('fecha_final').value,
 		},
 		type: "POST",
 		async: false,
@@ -272,3 +274,14 @@ $('#nuevo_dispositivo').submit(function(){
 	$('#loading').fadeOut(350);
 	return false;
 })
+
+function Fecha(){
+	// funcion para obtener fecha para los campos inicio y final
+	var f = new Date();
+	var anio = f.getFullYear();
+	var mes = ('0' + f.getMonth()).slice(-2);
+	var dia = ('0' + f.getDay()).slice(-2);
+	var fecha = anio+"-"+mes+"-"+dia;
+
+	return fecha;
+}
