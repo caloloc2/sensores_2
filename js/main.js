@@ -161,7 +161,7 @@ function Obtener_Datos(){
 				    series.push(humo);
 
 				    var alcohol = {
-				        name: 'Alcohol',
+				        name: 'Metano',
 				        data: alcohol_val
 				    }
 				    series.push(alcohol);

@@ -25,8 +25,8 @@ try{
 			$humo = $_GET['humo'];
 		}
 
-		if (isset($_GET['alcohol'])){
-			$alcohol = $_GET['alcohol'];
+		if (isset($_GET['metano'])){
+			$metano = $_GET['metano'];
 		}
 
 		if (isset($_GET['temp'])){
@@ -45,7 +45,7 @@ try{
 			$longitud = $_GET['longitud'];
 		}
 
-		$insertar = Meta::Nuevo_Dato($fecha, $hora, $co2, $humo, $alcohol, $temp, $humedad, $latitud, $longitud, $id);
+		$insertar = Meta::Nuevo_Dato($fecha, $hora, $co2, $humo, $metano, $temp, $humedad, $latitud, $longitud, $id);
 
 		echo 'ok';
 	}else{
