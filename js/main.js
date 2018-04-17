@@ -1,48 +1,52 @@
 function Login(){
-	var usuario = document.getElementById('usuario').value;
-	var pass = document.getElementById('pass').value;
+	var usuario = document.getElementById('usuario').value; // obtiene el nombre de usuario en la pantalla de login
+	var pass = document.getElementById('pass').value; // obtiene la clave en la pantalla de login 
 
-	if ((usuario!='')&&(pass!='')){
-		if ((usuario=='admin')&&(pass=='1234')){
-			Crear_Inicio();
-		}else{
-			alert("El usuario o contrasena son incorrectos.");
+	if ((usuario!='')&&(pass!='')){ // confirma que se ingresen valores y no campos en blanco
+		if ((usuario=='admin')&&(pass=='1234')){ // confirma el nombre de usuario y clave para entrar al sistema
+			Crear_Inicio(); // Llama a la funcion 
+		}else{ // caso contrario
+			alert("El usuario o contrasena son incorrectos."); // muestra mensaje de error de usuario y contrasena
 		}
-	}else{
-		alert("Debe especificar los dos campos obligatoriamente.");
+	}else{ // caso contrario
+		alert("Debe especificar los dos campos obligatoriamente."); // muesta mensaje de que deben ingresar los dos campos.
 	}
 }
 
 
 function Crear_Inicio(){
+	// funcion ajax
 	$.ajax({
-		url: 'php/login.php',
-		dataType: 'json',
-		async: false,
-		success: function(datos) {
-			if (!datos['estado']){
-				alert("Error al crear el inicio de sesion.");
-				console.log(datos['error']);
-			}else{
-				window.location.href = 'index.html';
+		url: 'php/login.php', // nombre del archivo a llamar
+		dataType: 'json', // tipo de datos que va a devolver la llamada ajax
+		async: false, // no asincrona, es decir, espera a que se ejecute y devuelva algo para seguir con la programacion
+		success: function(datos) { // en caso de no tener errores
+			if (!datos['estado']){ // confirma que el estado sea true o verdadero
+				// si es false
+				alert("Error al crear el inicio de sesion."); // enviar mensaje de error
+				console.log(datos['error']); // escribe en consola el error
+			}else{ // caso contrario, es verdadero
+				window.location.href = 'index.html'; // dirige a la pagina index.html 
 			}
 		},
-		error:function(e){
-			console.log(e.responseText);
+		error:function(e){ // en caso de error
+			console.log(e.responseText); // escribe en consola el error
 		}
 	});
 }
 
-function Verifica_Inicio(){
+function Verifica_Inicio(){ 
+	// esta funcion se ejecuta al principio para verificar si ya existe una sesion
 	$.ajax({
 		url: 'php/logueado.php',
 		dataType: 'json',
 		async: false,
 		success: function(datos) {
 			if (!datos['estado']){
+				// en caso de no existir una sesion o que haya caducado, redirige a la pagina de inicio de sesion
 				window.location.href = 'login.html';
-			}else{
-				$('#loading').fadeOut(550);
+			}else{ // caso contrario
+				$('#loading').fadeOut(550); // desaparece el icono de cargando
 			}
 		},
 		error:function(e){
@@ -52,25 +56,27 @@ function Verifica_Inicio(){
 }
 
 function Dispositivos(){
+	// funcion que obtiene desde la abse de datos todos los nodos que se hayan ingresado al sistema
 	$.ajax({
 		url: 'php/obtener_dispositivos.php',
 		dataType: 'json',
 		async: false,
 		success: function(datos) {			
 			if (datos['estado']){
+				// obtiene cada uno de los nodos desde la base de datos
 				var lista = '';
-				$('#dispositivos_seleccion').html('');
-				$('#listado_dispositivos').html('');
-				datos['dispositivos'].forEach( function(element, index) {
+				$('#dispositivos_seleccion').html(''); // limpia la lista de seleccion
+				$('#listado_dispositivos').html(''); // limpia la tabla de nodos
+				datos['dispositivos'].forEach( function(element, index) { // lista cada uno de los nodos encontrados
 					//console.log(element);
 					var item = '<option value="'+element['id_dispositivo']+'">'+element['dispositivo']+'</option>';					
 					lista += '<tr>';
 					lista += '<td>'+element['dispositivo']+' (id='+element['id_dispositivo']+')</td>';
 					lista += '<td width="5%"><a href="#" onclick="Eliminar_Dispositivo('+element['id_dispositivo']+'); return false;">Eliminar</a></td>';
 					lista += '</tr>';
-					$('#dispositivos_seleccion').append(item);
+					$('#dispositivos_seleccion').append(item); // agrega a la lista de seleccion
 				});
-				$('#listado_dispositivos').html(lista);
+				$('#listado_dispositivos').html(lista); // agrega a la tabla de nodos
 			}
 		},
 		error:function(e){
@@ -81,6 +87,7 @@ function Dispositivos(){
 }
 
 function Eliminar_Dispositivo(id){
+	// funcion para eliminar un nodo seleccionado en la tabla
 	$('#loading').fadeIn(150);
 	$.ajax({
 		url: 'php/eliminar_dispositivo.php',
@@ -102,6 +109,8 @@ function Eliminar_Dispositivo(id){
 }
 
 function Obtener_Datos(){
+
+	// funcion que obtiene los valores de sensores segun el nodo seleccionado en la lista
 	$.ajax({
 		url: 'php/obtener_datos.php',
 		dataType: 'json',
