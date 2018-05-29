@@ -109,16 +109,17 @@
 	<script>
 		$(document).ready(function(){
 			Dispositivos();
-
+			
+			document.getElementById('fecha_inicio').value = Fecha();
+			document.getElementById('fecha_final').value = Fecha();
+			
 			/*Obtener_Datos();	
 			document.getElementById('fecha_inicio').value = Fecha();
 			document.getElementById('fecha_final').value = Fecha();	*/
 
 			setInterval(function(){
 				console.log(document.getElementById('dispositivos_seleccion').value);
-				if (document.getElementById('dispositivos_seleccion').value!=''){
-					document.getElementById('fecha_inicio').value = Fecha();
-					document.getElementById('fecha_final').value = Fecha();	
+				if (document.getElementById('dispositivos_seleccion').value!=''){			
 					Obtener_Datos();	
 					console.log('consola', 'recargado.');
 				}
