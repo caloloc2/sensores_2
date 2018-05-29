@@ -111,10 +111,12 @@
 			Dispositivos();
 
 			setInterval(function(){
+				console.log(document.getElementById('dispositivos_seleccion').value);
 				if (document.getElementById('dispositivos_seleccion').value!=''){
 					document.getElementById('fecha_inicio').value = Fecha();
 					document.getElementById('fecha_final').value = Fecha();	
 					Obtener_Datos();	
+					console.log('consola', 'recargado.');
 				}
 			}, 5000)
 		})
