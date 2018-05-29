@@ -109,10 +109,14 @@
 	<script>
 		$(document).ready(function(){
 			Dispositivos();
-			Obtener_Datos();
-			
-			document.getElementById('fecha_inicio').value = Fecha();
-			document.getElementById('fecha_final').value = Fecha();
+
+			setInterval(function(){
+				if (document.getElementById('dispositivos_seleccion').value!=''){
+					document.getElementById('fecha_inicio').value = Fecha();
+					document.getElementById('fecha_final').value = Fecha();	
+					Obtener_Datos();	
+				}
+			}, 5000)
 		})
 	</script>
 </body>
