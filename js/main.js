@@ -279,8 +279,8 @@ function Fecha(){
 	// funcion para obtener fecha para los campos inicio y final
 	var f = new Date();
 	var anio = f.getFullYear();
-	var mes = ('0' + f.getMonth()).slice(-2);
-	var dia = ('0' + f.getDay()).slice(-2);
+	var mes = ('0' + (f.getMonth()+1)).slice(-2);
+	var dia = ('0' + f.getDate()).slice(-2);
 	var fecha = anio+"-"+mes+"-"+dia;
 
 	return fecha;
