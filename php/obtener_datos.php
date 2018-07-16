@@ -8,7 +8,7 @@ try{
 	$fecha_inicio = $_POST['fecha_inicio'];
 	$fecha_final = $_POST['fecha_final'];
 
-	$aux = Meta::Consulta("SELECT * FROM datos WHERE ((id_dispositivo=".$id_dispositivo.") AND (fecha BETWEEN '".$fecha_inicio."' AND '".$fecha_final."')) ORDER BY id_dato DESC");
+	$aux = Meta::Consulta("SELECT * FROM datos WHERE ((id_dispositivo=".$id_dispositivo.") AND (fecha BETWEEN '".$fecha_inicio."' AND '".$fecha_final."')) ORDER BY id_dato ASC");
 
 	if (count($aux)){
 		$respuesta['datos'] = $aux;

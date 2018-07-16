@@ -240,6 +240,11 @@ function Grafica(valores){
 	            text: 'Valor del Sensor'
 	        }
 	    },
+	    xAxis: {
+	        title: {
+	            text: 'Datos'
+	        }
+	    },
 	    plotOptions: {
 	        line: {
 	            dataLabels: {
