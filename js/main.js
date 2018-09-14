@@ -3,7 +3,7 @@ function Login(){
 	var pass = document.getElementById('pass').value; // obtiene la clave en la pantalla de login 
 
 	if ((usuario!='')&&(pass!='')){ // confirma que se ingresen valores y no campos en blanco
-		if ((usuario=='admin')&&(pass=='1234')){ // confirma el nombre de usuario y clave para entrar al sistema
+		if ((usuario=='administrador')&&(pass=='123456')){ // confirma el nombre de usuario y clave para entrar al sistema
 			Crear_Inicio(); // Llama a la funcion 
 		}else{ // caso contrario
 			alert("El usuario o contrasena son incorrectos."); // muestra mensaje de error de usuario y contrasena
@@ -126,11 +126,10 @@ function Obtener_Datos(){
 			if (datos['estado']){
 				var items = '';
 				var series = [];
-				var co2_val = [];
-				var humo_val = [];
-				var alcohol_val = [];
-				var temperatura_val = [];
-				var humedad_val = [];
+				var temp_val = [];
+				var agua_val = [];
+				var gasolina_val = [];
+				var velocidad_val = [];
 
 				try {					
 					datos['datos'].forEach( function(element, index) {
@@ -138,11 +137,10 @@ function Obtener_Datos(){
 						items += '<tr>';
 						items += '<td>'+element['fecha']+'</td>';
 						items += '<td>'+element['hora']+'</td>';
-						items += '<td>'+element['co2']+'</td>';
-						items += '<td>'+element['humo']+'</td>';
-						items += '<td>'+element['alcohol']+'</td>';
 						items += '<td>'+element['temperatura']+'</td>';
-						items += '<td>'+element['humedad']+'</td>';
+						items += '<td>'+element['nivel_agua']+'</td>';
+						items += '<td>'+element['nivel_gasolina']+'</td>';
+						items += '<td>'+element['velocidad']+'</td>';
 						items += '<td>'+element['latitud']+'</td>';
 						items += '<td>'+element['longitud']+'</td>';
 						if ((element['latitud']!=0)&&(element['latitud']!=0)){
@@ -152,42 +150,35 @@ function Obtener_Datos(){
 						}
 						items += '</tr>';
 
-						co2_val.push(parseFloat(element['co2']));
-						humo_val.push(parseFloat(element['humo']));
-						alcohol_val.push(parseFloat(element['alcohol']));
-						temperatura_val.push(parseFloat(element['temperatura']));
-						humedad_val.push(parseFloat(element['humedad']));
+						temp_val.push(parseFloat(element['temperatura']));
+						agua_val.push(parseFloat(element['nivel_agua']));
+						gasolina_val.push(parseFloat(element['nivel_gasolina']));
+						velocidad_val.push(parseFloat(element['velocidad']));
 					});
 
-					var co2 = {
-				        name: 'CO2',
-				        data: co2_val
-				    }
-				    series.push(co2);
-
-				    var humo = {
-				        name: 'Humo',
-				        data: humo_val
-				    }
-				    series.push(humo);
-
-				    var alcohol = {
-				        name: 'Metano',
-				        data: alcohol_val
-				    }
-				    series.push(alcohol);
-
-				    var temperatura = {
+					var temp = {
 				        name: 'Temperatura',
-				        data: temperatura_val
+				        data: temp_val
 				    }
-				    series.push(temperatura);
+				    series.push(temp);
 
-				    var humedad = {
-				        name: 'Humedad',
-				        data: humedad_val
+				    var agua = {
+				        name: 'Nivel Agua',
+				        data: agua_val
 				    }
-				    series.push(humedad);
+				    series.push(agua);
+
+				    var gasolina = {
+				        name: 'Nivel Gasolina',
+				        data: gasolina_val
+				    }
+				    series.push(gasolina);
+
+				    var velocidad = {
+				        name: 'Velocidad',
+				        data: velocidad_val
+				    }
+				    series.push(velocidad);				    
 
 				} catch(e) {
 					//console.log(e);

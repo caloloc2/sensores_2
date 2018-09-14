@@ -112,15 +112,15 @@ class Meta
      * @param $edad         nueva descripcion 
      * @return PDOStatement
      */
-    public static function Nuevo_Dato($fecha, $hora, $co2, $humo, $alcohol, $temp, $humedad, $latitud, $longitud, $id_dispositivo)
+    public static function Nuevo_Dato($fecha, $hora, $temperatura, $nivel_agua, $nivel_gasolina, $velocidad, $latitud, $longitud, $id_dispositivo)
     {        
         // Sentencia INSERT
-        $comando = "INSERT INTO datos (fecha, hora, co2, humo, alcohol, temperatura, humedad, latitud, longitud, id_dispositivo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $comando = "INSERT INTO datos (fecha, hora, temperatura, nivel_agua, nivel_gasolina, velocidad, latitud, longitud, id_dispositivo) VALUES (?,?,?,?,?,?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($fecha, $hora, $co2, $humo, $alcohol, $temp, $humedad, $latitud, $longitud, $id_dispositivo));
+        return $sentencia->execute(array($fecha, $hora, $temperatura, $nivel_agua, $nivel_gasolina, $velocidad, $latitud, $longitud, $id_dispositivo));
 
     }
 

@@ -24,17 +24,16 @@ function Impresion(){
 
 			tipografia(doc, 'helvetica', 20, 'bold');
 			doc.setTextColor(0, 0, 0);
-			doc.text(25, y, 'REPORTE SENSORES');
+			doc.text(25, y, 'REPORTE SENSORES LORAUPS');
 			y+=10;
 
 			tipografia(doc, 'helvetica', 8, 'bold');	
 			doc.text(25, y, 'FECHA');
 			doc.text(45, y, 'HORA');
-			doc.text(63, y, 'CO2');
-			doc.text(75, y, 'HUMO');
-			doc.text(90, y, 'ALCOHOL');
-			doc.text(107, y, 'TEMP');
-			doc.text(120, y, 'HUMEDAD');
+			doc.text(63, y, 'TEMP.');
+			doc.text(75, y, 'AGUA');
+			doc.text(90, y, 'GASOLINA');
+			doc.text(107, y, 'VELOCIDAD');			
 			doc.text(138, y, 'LATITUD');
 			doc.text(155, y, 'LONGITUD');
 			y+=5;
@@ -44,11 +43,10 @@ function Impresion(){
 				for (x=0; x<datos['datos'].length>0; x++){
 					doc.text(25, y, String(datos['datos'][x]['fecha']));
 					doc.text(45, y, String(datos['datos'][x]['hora']));
-					doc.text(63, y, String(datos['datos'][x]['co2']));
-					doc.text(75, y, String(datos['datos'][x]['humo']));
-					doc.text(90, y, String(datos['datos'][x]['alcohol']));
-					doc.text(107, y, String(datos['datos'][x]['temperatura']));
-					doc.text(120, y, String(datos['datos'][x]['humedad']));
+					doc.text(63, y, String(datos['datos'][x]['temperatura']));
+					doc.text(75, y, String(datos['datos'][x]['nivel_agua']));
+					doc.text(90, y, String(datos['datos'][x]['nivel_gasolina']));
+					doc.text(107, y, String(datos['datos'][x]['velocidad']));					
 					doc.text(138, y, String(datos['datos'][x]['latitud']));
 					doc.text(155, y, String(datos['datos'][x]['longitud']));
 					

@@ -7,34 +7,30 @@ try{
 	$fecha = date('Y-m-d');
 	$hora = date('H:i:s');
 
-	$humo = 0;
-	$alcohol = 0;
-	$temp = 0;
-	$humedad = 0;
+	$temperatura = 0;
+	$nivel_agua = 0;
+	$nivel_gasolina = 0;
+	$velocidad = 0;	
 	$latitud = 0;
 	$longitud = 0;
 
 	if (isset($_GET['id'])){
 		$id = $_GET['id'];
 
-		if (isset($_GET['co2'])){
-			$co2 = $_GET['co2'];
+		if (isset($_GET['temperatura'])){
+			$temperatura = $_GET['temperatura'];
 		}
 
-		if (isset($_GET['humo'])){
-			$humo = $_GET['humo'];
+		if (isset($_GET['nivel_agua'])){
+			$nivel_agua = $_GET['nivel_agua'];
 		}
 
-		if (isset($_GET['metano'])){
-			$metano = $_GET['metano'];
+		if (isset($_GET['nivel_gasolina'])){
+			$nivel_gasolina = $_GET['nivel_gasolina'];
 		}
 
-		if (isset($_GET['temp'])){
-			$temp = $_GET['temp'];
-		}
-
-		if (isset($_GET['humedad'])){
-			$humedad = $_GET['humedad'];
+		if (isset($_GET['velocidad'])){
+			$velocidad = $_GET['velocidad'];
 		}
 
 		if (isset($_GET['latitud'])){
@@ -45,7 +41,7 @@ try{
 			$longitud = $_GET['longitud'];
 		}
 
-		$insertar = Meta::Nuevo_Dato($fecha, $hora, $co2, $humo, $metano, $temp, $humedad, $latitud, $longitud, $id);
+		$insertar = Meta::Nuevo_Dato($fecha, $hora, $temperatura, $nivel_agua, $nivel_gasolina, $velocidad, $latitud, $longitud, $id);
 
 		echo 'ok';
 	}else{
