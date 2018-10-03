@@ -185,6 +185,22 @@ function Obtener_Datos(){
 				}
 				
 				Grafica(series);
+				
+				var temp_separada = [];
+				temp_separada.push(temp);
+				Grafica_Separada('temperatura', 'TEMPERATURA', temp_separada);
+
+				var agua_separada = [];
+				agua_separada.push(agua);
+				Grafica_Separada('agua', 'AGUA', agua_separada);
+
+				var gasolina_separada = [];
+				gasolina_separada.push(gasolina);
+				Grafica_Separada('gasolina', 'GASOLINA', gasolina_separada);
+
+				var velocidad_separada = [];
+				velocidad_separada.push(velocidad);
+				Grafica_Separada('velocidad', 'VELOCIDAD', velocidad_separada);
 
 				$('#listado').html(items);
 			}else{
@@ -280,4 +296,34 @@ function Fecha(){
 	var fecha = anio+"-"+mes+"-"+dia;
 
 	return fecha;
+}
+
+function Grafica_Separada(cual, titulo, valores){
+	Highcharts.chart(cual, {
+	    chart: {
+	        type: 'line'
+	    },
+	    title: {
+	        text: titulo
+	    },
+	    yAxis: {
+	        title: {
+	            text: 'Valor del Sensor'
+	        }
+	    },
+	    xAxis: {
+	        title: {
+	            text: 'Datos'
+	        }
+	    },
+	    plotOptions: {
+	        line: {
+	            dataLabels: {
+	                enabled: true
+	            },
+	            enableMouseTracking: false
+	        }
+	    },
+	    series: valores
+	});
 }
