@@ -17,28 +17,28 @@ try{
 	if (isset($_GET['id'])){
 		$id = $_GET['id'];
 
-		if (isset($_GET['temperatura'])){
-			$temperatura = $_GET['temperatura'];
+		if (isset($_GET['t'])){
+			$temperatura = $_GET['t'];
 		}
 
-		if (isset($_GET['nivel_agua'])){
-			$nivel_agua = $_GET['nivel_agua'];
+		if (isset($_GET['a'])){
+			$nivel_agua = $_GET['a'];
 		}
 
-		if (isset($_GET['nivel_gasolina'])){
-			$nivel_gasolina = $_GET['nivel_gasolina'];
+		if (isset($_GET['g'])){
+			$nivel_gasolina = $_GET['g'];
 		}
 
-		if (isset($_GET['velocidad'])){
-			$velocidad = $_GET['velocidad'];
+		if (isset($_GET['v'])){
+			$velocidad = $_GET['v'];
 		}
 
-		if (isset($_GET['latitud'])){
-			$latitud = $_GET['latitud'];
+		if (isset($_GET['l'])){
+			$latitud = $_GET['l'];
 		}
 
-		if (isset($_GET['longitud'])){
-			$longitud = $_GET['longitud'];
+		if (isset($_GET['o'])){
+			$longitud = $_GET['o'];
 		}
 
 		$insertar = Meta::Nuevo_Dato($fecha, $hora, $temperatura, $nivel_agua, $nivel_gasolina, $velocidad, $latitud, $longitud, $id);
