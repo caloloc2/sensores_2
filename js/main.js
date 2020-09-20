@@ -139,8 +139,7 @@ function Obtener_Datos(){
 						items += '<td>'+element['hora']+'</td>';
 						items += '<td>'+element['temperatura']+'</td>';
 						items += '<td>'+element['nivel_agua']+'</td>';
-						items += '<td>'+element['nivel_gasolina']+'</td>';
-						items += '<td>'+element['velocidad']+'</td>';
+						items += '<td>'+element['nivel_gasolina']+'</td>';						
 						items += '<td>'+element['latitud']+'</td>';
 						items += '<td>'+element['longitud']+'</td>';
 						if ((element['latitud']!=0)&&(element['latitud']!=0)){
@@ -152,8 +151,7 @@ function Obtener_Datos(){
 
 						temp_val.push(parseFloat(element['temperatura']));
 						agua_val.push(parseFloat(element['nivel_agua']));
-						gasolina_val.push(parseFloat(element['nivel_gasolina']));
-						velocidad_val.push(parseFloat(element['velocidad']));
+						gasolina_val.push(parseFloat(element['nivel_gasolina']));						
 					});
 
 					var temp = {
@@ -163,22 +161,16 @@ function Obtener_Datos(){
 				    series.push(temp);
 
 				    var agua = {
-				        name: 'Nivel Agua',
+				        name: 'Humo',
 				        data: agua_val
 				    }
 				    series.push(agua);
 
 				    var gasolina = {
-				        name: 'Nivel Gasolina',
+				        name: 'Co2',
 				        data: gasolina_val
 				    }
-				    series.push(gasolina);
-
-				    var velocidad = {
-				        name: 'Velocidad',
-				        data: velocidad_val
-				    }
-				    series.push(velocidad);				    
+				    series.push(gasolina);				    			    
 
 				} catch(e) {
 					//console.log(e);
@@ -192,15 +184,11 @@ function Obtener_Datos(){
 
 				var agua_separada = [];
 				agua_separada.push(agua);
-				Grafica_Separada('agua', 'AGUA', agua_separada);
+				Grafica_Separada('agua', 'HUMO', agua_separada);
 
 				var gasolina_separada = [];
 				gasolina_separada.push(gasolina);
-				Grafica_Separada('gasolina', 'GASOLINA', gasolina_separada);
-
-				var velocidad_separada = [];
-				velocidad_separada.push(velocidad);
-				Grafica_Separada('velocidad', 'VELOCIDAD', velocidad_separada);
+				Grafica_Separada('gasolina', 'CO2', gasolina_separada);				
 
 				$('#listado').html(items);
 			}else{
