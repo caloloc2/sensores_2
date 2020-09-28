@@ -24,18 +24,17 @@ function Impresion(){
 
 			tipografia(doc, 'helvetica', 20, 'bold');
 			doc.setTextColor(0, 0, 0);
-			doc.text(25, y, 'REPORTE SENSORES LORAUPS');
+			doc.text(25, y, 'REPORTE SENSORES');
 			y+=10;
 
 			tipografia(doc, 'helvetica', 8, 'bold');	
 			doc.text(25, y, 'FECHA');
 			doc.text(45, y, 'HORA');
 			doc.text(63, y, 'TEMP.');
-			doc.text(75, y, 'AGUA');
-			doc.text(90, y, 'GASOLINA');
-			doc.text(107, y, 'VELOCIDAD');			
-			doc.text(138, y, 'LATITUD');
-			doc.text(155, y, 'LONGITUD');
+			doc.text(75, y, 'HUMO');
+			doc.text(90, y, 'CO2');
+			doc.text(107, y, 'LATITUD');
+			doc.text(138, y, 'LONGITUD');			
 			y+=5;
 			
 			tipografia(doc, 'helvetica', 8, 'normal');
@@ -46,9 +45,8 @@ function Impresion(){
 					doc.text(63, y, String(datos['datos'][x]['temperatura']));
 					doc.text(75, y, String(datos['datos'][x]['nivel_agua']));
 					doc.text(90, y, String(datos['datos'][x]['nivel_gasolina']));
-					doc.text(107, y, String(datos['datos'][x]['velocidad']));					
-					doc.text(138, y, String(datos['datos'][x]['latitud']));
-					doc.text(155, y, String(datos['datos'][x]['longitud']));
+					doc.text(107, y, String(datos['datos'][x]['latitud']));					
+					doc.text(138, y, String(datos['datos'][x]['longitud']));					
 					
 					if (y>275){
 						doc.addPage();
