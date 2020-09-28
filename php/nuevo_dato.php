@@ -21,17 +21,13 @@ try{
 			$temperatura = $_GET['t'];
 		}
 
-		if (isset($_GET['a'])){
-			$nivel_agua = $_GET['a'];
+		if (isset($_GET['h'])){
+			$nivel_agua = $_GET['h'];
 		}
 
-		if (isset($_GET['g'])){
-			$nivel_gasolina = $_GET['g'];
-		}
-
-		if (isset($_GET['v'])){
-			$velocidad = $_GET['v'];
-		}
+		if (isset($_GET['c'])){
+			$nivel_gasolina = $_GET['c'];
+		}		
 
 		if (isset($_GET['l'])){
 			$latitud = $_GET['l'];
